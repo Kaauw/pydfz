@@ -1,5 +1,2 @@
 venv/
-app/bgp-view/*
-app/conf/*
-app/mrt2exabgp.py
 app/bgp.yaml
