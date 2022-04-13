@@ -1,0 +1,3 @@
+[submodule "app/mrtparse"]
+	path = app/mrtparse
+	url = git@github.com:t2mune/mrtparse.git

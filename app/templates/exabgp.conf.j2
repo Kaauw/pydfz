@@ -1,0 +1,20 @@
+{%- for neighbor in neighbors %}
+process announce-routes-{{ neighbor.name }} {
+    run ./bgp-table-{{ neighbor.name }}.py;
+    encoder json;
+}
+
+neighbor {{ neighbor.remote_addr }} {
+    router-id {{ neighbor.local_addr }};
+    local-address {{ neighbor.local_addr }};
+    local-as {{ neighbor.local_as }};
+    peer-as {{ neighbor.remote_as }};
+    api {
+        processes [ announce-routes-{{ neighbor.name }} ];
+    }
+    family {
+        ipv4 unicast;
+        ipv6 unicast;
+    }
+}
+{%- endfor %}
